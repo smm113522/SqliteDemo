@@ -2,16 +2,12 @@ package com.kesun.sqlite.realm;
 
 import com.kesun.sqlite.App;
 import com.kesun.sqlite.activeandroid.DbManager;
-import com.kesun.sqlite.greendao.DaoManage;
-
-import io.realm.Realm;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmAsyncTask;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
 import io.realm.Sort;

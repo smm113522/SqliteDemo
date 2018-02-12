@@ -4,13 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kesun.sqlite.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +23,7 @@ public class ActiveActivity extends AppCompatActivity implements View.OnClickLis
     private TextView mDelect;
     private ListView mViewList;
     private ActiveAdapter activeAdapter;
-
+    private DbManager dbManager;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +39,17 @@ public class ActiveActivity extends AppCompatActivity implements View.OnClickLis
         mDelect = (TextView) findViewById(R.id.delect);
         mDelect.setOnClickListener(this);
         mViewList = (ListView) findViewById(R.id.list_view);
+
+        //对ListView设置点击条目监听，点击某个条目后删除该条目
+        mViewList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                DbManager.getInstance().deleteUser(users.get(i));
+                query();
+                activeAdapter.notifyDataSetChanged();
+            }
+        });
+        dbManager = new DbManager();
         activeAdapter = new ActiveAdapter(this);
         mViewList.setAdapter(activeAdapter);
     }
@@ -54,7 +64,7 @@ public class ActiveActivity extends AppCompatActivity implements View.OnClickLis
                 user.setAge(28);
                 user.setUserId(1);
                 user.setUserName("张飞");
-                DbManager.getInstance().insertUser(user);
+                dbManager.insertUser(user);
                 query();
                 break;
             case R.id.select:
@@ -68,10 +78,10 @@ public class ActiveActivity extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
-
+    List<User> users;
     //查询所有
     public void query() {
-        List<User> users = DbManager.getInstance().queryUser();
+        users = dbManager.queryUser();
         activeAdapter.setList(users);
     }
 }
