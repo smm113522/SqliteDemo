@@ -8,6 +8,6 @@
 
 3，Android ORM 框架之 greenDAO
 
-![/https://github.com/smm113522/SqliteDemo/blob/master/demo.gif](图片)
+![/https://github.com/smm113522/SqliteDemo/blob/master/demo.gif](demo.gif)
 
  [▲ 回到顶部](#top)
