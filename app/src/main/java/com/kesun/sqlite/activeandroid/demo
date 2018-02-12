@@ -1,0 +1,23 @@
+  Configuration.Builder builder = new Configuration.Builder(this);
+        //手动的添加模型类
+        builder.addModelClasses(User.class);
+        ActiveAndroid.initialize(builder.create());
+@Table(name = "user")
+public class User extends Model {
+
+    @Column
+    private String userName;
+    @Column
+    private int userId;
+    @Column
+    private int age;
+    @Column
+    private String addr;
+
+    DbManager单例模式
+
+    ActiveAndroid使用详解
+    http://blog.csdn.net/ljw124213/article/details/53010842
+
+    很好
+

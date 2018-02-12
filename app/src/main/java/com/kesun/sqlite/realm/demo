@@ -1,0 +1,20 @@
+适配器（Adapter）
+
+（官方原文）
+Realm提供了一些抽象的工具类来方便地将 OrderedRealmCollection
+（RealmResults和 RealmList 都实现了这个借口）展示到UI控件上。
+
+RealmBaseAdapter 可以与ListView配合使用。参见示例.
+RealmRecyclerViewAdapter可以与 RecyclerView配合使用。参见示例.
+你需要在 app 的 build.gradle中添加额外的依赖以使用这些适配器。
+
+dependencies {
+    compile 'io.realm:android-adapters:1.4.0'
+}
+
+https://www.jianshu.com/p/37af717761cc
+
+Realm 是一个 MVCC （多版本并发控制）数据库，由Y Combinator公司在2014年7月发布一款支持运行在手机、平板和可穿戴设备上的嵌入式数据库，目标是取代SQLite。
+Realm 本质上是一个嵌入式数据库，他并不是基于SQLite所构建的。它拥有自己的数据库存储引擎，可以高效且快速地完成数据库的构建操作。和SQLite不同，它允许你在持久层直接和数据对象工作。在它之上是一个函数式风格的查询api，众多的努力让它比传统的SQLite 操作更快 。
+详细介绍（如果进不去，看这个也行）
+
